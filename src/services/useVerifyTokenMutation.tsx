@@ -1,6 +1,6 @@
 import { UseMutationResult, useMutation } from "react-query";
 import axios, { AxiosError, AxiosResponse } from "axios";
-import { Credentials, VerifyTokenError, VerifyTokenVar } from "@/types";
+import { Credentials, VerifyTokenError } from "@/types";
 
 const verifyToken = async (credentials: Credentials) => {
   const url = "http://localhost:8000/api/v1/users/verify";

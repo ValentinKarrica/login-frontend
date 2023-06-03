@@ -1,3 +1,4 @@
 export * from "./useSignUpMutation";
 export * from "./useLoginMutation";
-export * from "./verifyTokenMutation";
+export * from "./useVerifyTokenMutation";
+export * from "./useUpdatePasswordMutation";

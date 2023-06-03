@@ -17,7 +17,6 @@ import {
   SignUpError,
   SignUpFormFields,
   VerifyTokenError,
-  VerifyTokenVar,
 } from "@/types";
 import { AxiosError } from "axios";
 
@@ -35,15 +34,14 @@ interface AuthenticationReturnType {
   loginIsSuccess: boolean;
   loginError: AxiosError<LoginError> | null;
   verifyTokenError: AxiosError<VerifyTokenError> | null;
+  handleAuthenticationSuccess: (credentials: Credentials) => void;
 }
 
 const AuthenticationContext = createContext<any>(null);
 
 const useAuthenticationProvider = (): AuthenticationReturnType => {
-  const [test, setTest] = useState(0);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isAuthenticatedVerify, setIsAuthenticatedVerify] = useState(false);
-  const [isVerifyTokenConfirm, setIsVerifyTokenConfirm] = useState(false);
   const [credentials, setCredentials] = useState<Credentials>({
     token: "",
     user: {
@@ -76,7 +74,6 @@ const useAuthenticationProvider = (): AuthenticationReturnType => {
   const {
     mutate: verifyTokenMutate,
     data: verifyTokenData,
-    isSuccess: verifyTokenIsSuccess,
     error: verifyTokenError,
     isLoading: verifyTokenIsLoading,
     status: verifyTokenStatus,
@@ -148,6 +145,7 @@ const useAuthenticationProvider = (): AuthenticationReturnType => {
     loginIsSuccess,
     loginError,
     verifyTokenError,
+    handleAuthenticationSuccess,
   };
 };
 

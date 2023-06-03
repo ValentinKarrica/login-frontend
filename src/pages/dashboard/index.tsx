@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useAuthentication } from "@/hooks";
 import { useRouter } from "next/router";
 import { Dashboard } from "@/components";
+import { Button } from "@/elements";
 
 interface Params {
   params: { userName: string };
@@ -14,5 +15,12 @@ export default function User({ params }: Params) {
     if (!isAuthenticated && isAuthenticatedVerify) router.push("/");
   }, [isAuthenticated, isAuthenticatedVerify]);
 
-  return <Dashboard />;
+  return (
+    <div>
+      <Button onClick={() => router.push("/dashboard/update-password")}>
+        Update your password
+      </Button>
+      <Dashboard />;
+    </div>
+  );
 }
