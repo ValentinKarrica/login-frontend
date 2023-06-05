@@ -11,6 +11,6 @@ export interface User {
 
 export interface Credentials {
   user: User;
-  token: string;
+  token?: string;
   status?: string;
 }

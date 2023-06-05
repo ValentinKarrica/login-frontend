@@ -89,6 +89,8 @@ const useAuthenticationProvider = (): AuthenticationReturnType => {
   const handleAuthenticationFailure = () => {
     setIsAuthenticated(false);
     setIsAuthenticatedVerify(true);
+    ///Note cookies have to be deleted
+    console.log("Cookies", document.cookie);
     localStorage.removeItem("credentials");
   };
 
@@ -125,15 +127,9 @@ const useAuthenticationProvider = (): AuthenticationReturnType => {
     }
   }, []);
 
-  const logOut = () => {
-    localStorage.removeItem("credentials");
-    setIsAuthenticated(false);
-    setIsAuthenticatedVerify(true);
-  };
-
   return {
     credentials,
-    logOut,
+    logOut: handleAuthenticationFailure,
     isAuthenticated,
     isAuthenticatedVerify,
     signUpMutate,
